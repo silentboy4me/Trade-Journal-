@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0D1117">
+<title>Ledger — Trading Journal</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ledger">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <line x1="4" y1="18" x2="4" y2="10" stroke="#E0A03C" stroke-width="2" stroke-linecap="round"/>
+        <line x1="12" y1="18" x2="12" y2="5" stroke="#2EA06E" stroke-width="2" stroke-linecap="round"/>
+        <line x1="20" y1="18" x2="20" y2="13" stroke="#C84646" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Ledger</span>
+    </div>
+    <button class="icon-btn" id="settingsBtn" aria-label="Settings">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Views -->
+  <main id="views">
+
+    <!-- DASHBOARD -->
+    <section class="view active" id="view-dashboard">
+      <div id="dashContent"></div>
+    </section>
+
+    <!-- TRADES LIST -->
+    <section class="view" id="view-trades">
+      <div class="view-header">
+        <h1>Trades</h1>
+        <div class="filter-row" id="filterRow"></div>
+      </div>
+      <div id="tradesList" class="trades-list"></div>
+    </section>
+
+    <!-- NEW / EDIT TRADE -->
+    <section class="view" id="view-entry">
+      <div class="view-header">
+        <h1 id="entryTitle">New Trade</h1>
+      </div>
+      <form id="tradeForm" class="entry-form"></form>
+    </section>
+
+    <!-- TRADE DETAIL -->
+    <section class="view" id="view-detail">
+      <div id="detailContent"></div>
+    </section>
+
+    <!-- INSIGHTS -->
+    <section class="view" id="view-insights">
+      <div class="view-header">
+        <h1>Insights</h1>
+        <p class="muted">Patterns pulled from your own trade history — no data leaves your device.</p>
+      </div>
+      <div id="insightsContent"></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="view" id="view-settings">
+      <div class="view-header"><h1>Settings</h1></div>
+      <div id="settingsContent"></div>
+    </section>
+
+  </main>
+
+  <!-- Bottom nav -->
+  <nav class="bottomnav">
+    <button class="navbtn active" data-view="dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="12" width="4" height="8"/><rect x="10" y="7" width="4" height="13"/><rect x="17" y="3" width="4" height="17"/></svg>
+      <span>Overview</span>
+    </button>
+    <button class="navbtn" data-view="trades">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      <span>Trades</span>
+    </button>
+    <button class="navbtn fab" data-view="entry" id="fabAdd">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+    <button class="navbtn" data-view="insights">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+      <span>Insights</span>
+    </button>
+    <button class="navbtn" data-view="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="7" r="3.2"/><path d="M4.5 20c1.4-3.6 4.4-5.4 7.5-5.4s6.1 1.8 7.5 5.4"/></svg>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
